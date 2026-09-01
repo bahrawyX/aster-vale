@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aster Vale concept film</title>
+  <style>
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #11151b; }
+    video { width: 100%; height: 100%; display: block; object-fit: cover; }
+  </style>
+</head>
+<body>
+  <video id="film" autoplay muted loop playsinline controls></video>
+  <script>
+    const allowed = new Set(['nadir', 'meridian', 'zenith', 'orion', 'aster-family', 'polaris']);
+    const requested = new URLSearchParams(location.search).get('film');
+    const film = allowed.has(requested) ? requested : 'nadir';
+    document.querySelector('#film').src = `./${film}.mp4`;
+  </script>
+</body>
+</html>
