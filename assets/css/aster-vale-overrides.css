@@ -1,0 +1,30 @@
+/* Aster Vale project-specific refinements. */
+
+@media screen and (max-width: 991px) {
+  /* Keep the mobile hero photograph continuous while the light-field scene
+     (including the satellite) remains visible above it. */
+  .hero-w_scene-over {
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  .hero-w_scene-over .scene {
+    background: transparent !important;
+  }
+
+  /* The mobile menu retains its hit area and behavior, but the brand mark is
+     reduced from the mountain/arrow/star stack to the star alone. */
+  .mob_menu-btn_ico_line.top,
+  .mob_menu-btn_ico_line.center {
+    display: none !important;
+  }
+
+  .mob_menu-btn_ico_line.bot {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    color: #fff !important;
+    mix-blend-mode: difference;
+  }
+}
