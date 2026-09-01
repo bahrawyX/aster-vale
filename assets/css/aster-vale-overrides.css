@@ -12,11 +12,81 @@
   display: none !important;
 }
 
-/* Keep the studio descriptor attached to the identity card itself. */
-.dev-s_card_studio-label {
-  margin-bottom: 1.5rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+/* The hero is now a single photograph. This removes the four-viewport scrub
+   track and its 120-frame download without changing the composition. */
+.hero-scroll-area {
+  height: 100svh !important;
+}
+
+.hero-w_bg .img-w {
+  background-image: url("/assets/media/aster-vale/site/69a3899482e24dd9d010b5f1_hero-video_00.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-w_bg .scroll-video {
+  display: none !important;
+}
+
+.hero-w_scene-over,
+.hero-w_scene-bg {
+  display: none !important;
+}
+
+.mob_hero-w_bg .img-w {
+  background-image: url("/assets/media/aster-vale/site/69a3899482e24dd9d010b5f1_hero-video_00.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.mob_hero-w_bg .hero-img {
+  display: none !important;
+}
+
+/* The nightfall interlude no longer needs a full viewport reserved for a
+   canvas animation. Keep the editorial pause, but size it to its content. */
+.prolog-s {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-block: clamp(5rem, 9vw, 9rem);
+}
+
+.prolog-s > .grid {
+  min-height: 0 !important;
+}
+
+.prolog-w_scene {
+  display: none !important;
+}
+
+/* The seasons section follows ownership immediately; do not preserve the old
+   animated-scene minimum height between the two content blocks. */
+.apartments-s {
+  min-height: 0 !important;
+}
+
+.apartments-s > .u-136:first-child {
+  height: 3rem !important;
+}
+
+#ownership [parallax],
+#nadir [parallax],
+#prolog [parallax] {
+  transform: none !important;
+}
+
+.dev-w_scene-over,
+.dev-w_scene-bg {
+  display: none !important;
+}
+
+.video-card_still {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* The ownership mountain belongs at the foot of the section. Constrain the
@@ -112,5 +182,21 @@
   .footer-orbit-media {
     top: 45%;
     width: min(28rem, 86vw);
+  }
+
+  .hero-scroll-area {
+    height: 100svh !important;
+  }
+
+  .prolog-s {
+    padding-block: 5rem;
+  }
+
+  .mob_fin-s_scene {
+    display: none !important;
+  }
+
+  .fin-s > .u-104 {
+    height: 4rem !important;
   }
 }

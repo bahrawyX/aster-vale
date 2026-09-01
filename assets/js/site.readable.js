@@ -235,7 +235,7 @@ function initPageTransitions() {
 }
 
 function initScripts() {
-    initThemeChange(), initHeaderHide(), initSnapSections(), initForm(), initPlayPauseVideoScroll(), initIndexCounter(), initNextEntityCard(), initOther(), initAllParallax(), initSectionTransition(), initScrollElementsReveal(), initHighlightText(), initMagneticEffect(), initMapPins(), initNavItemHover(), initMenuItemHover(), initMarquee(), initSoundToggle(), initBenefitCard(), initAccordion(), initLoadMore(), initSlider(), initSliderText(), initSliderFreemode(), initTabs(), initTabsHilight(), initTabsText(), initSummerWinterSwitcher(), initModalCta(), initModalMedia(), initModalMenu(), initFloatingTips(), initScrollVideo(), initModalVimVideo()
+    initThemeChange(), initHeaderHide(), initSnapSections(), initForm(), initPlayPauseVideoScroll(), initIndexCounter(), initNextEntityCard(), initOther(), initAllParallax(), initSectionTransition(), initScrollElementsReveal(), initHighlightText(), initMagneticEffect(), initMapPins(), initNavItemHover(), initMenuItemHover(), initMarquee(), initSoundToggle(), initBenefitCard(), initAccordion(), initLoadMore(), initSlider(), initSliderText(), initSliderFreemode(), initTabs(), initTabsHilight(), initTabsText(), initSummerWinterSwitcher(), initModalCta(), initModalMenu(), initFloatingTips(), initModalVimVideo()
 }
 
 function initAllScenes() {
@@ -2118,7 +2118,7 @@ function initModalMedia() {
             s = document.querySelectorAll(`[modal-media-close="${n}"]`);
         if (!i) return;
         let c = !1;
-        const l = "/assets/media/aster-vale/runtime/aster-vale-film.mp4";
+        const l = "";
         r && (r.removeAttribute("src"), r.load()), gsap.set(i, {
             display: "none"
         }), e.addEventListener("click", (() => {
@@ -4108,13 +4108,5 @@ const hour = (new Date).getHours(),
     canvas = document.querySelector("[data-scroll-video]"),
     mobImg = document.querySelector("[data-hero-img]");
 canvas && (canvas.classList.remove(isDayTime ? "dark" : "light"), canvas.classList.add(isDayTime ? "light" : "dark")), mobImg && (mobImg.classList.remove(isDayTime ? "dark" : "light"), mobImg.classList.add(isDayTime ? "light" : "dark"));
-const framesPromise = window.innerWidth >= breakPoint ? Promise.all(Array.from({
-    length: 120
-}, ((e, t) => {
-    const o = `${isDayTime?"/assets/media/aster-vale/runtime/hero-video":"/assets/media/aster-vale/runtime/hero-video-dark"}/${String(t).padStart(3,"0")}.webp`;
-    return new Promise((e => {
-        const t = new Image;
-        t.src = o, t.onload = () => e(t), t.onerror = () => e(null)
-    }))
-}))) : Promise.resolve(null);
+const framesPromise = Promise.resolve([]);
 initPreloader();
