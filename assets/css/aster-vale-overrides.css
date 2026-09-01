@@ -88,9 +88,25 @@
   .mob_menu-btn_ico_line.bot {
     display: block !important;
     opacity: 1 !important;
-    transform: none !important;
+    transform-origin: center;
+    will-change: transform;
     color: #fff !important;
     mix-blend-mode: difference;
+  }
+
+  /* Clear the fixed header before the first menu item, then tighten the link
+     rhythm so the full menu still fits comfortably in one viewport. */
+  .modal_menu_top {
+    height: 14dvh !important;
+  }
+
+  [data-nav].modal_menu_nav {
+    gap: 0 !important;
+    row-gap: 0 !important;
+  }
+
+  [data-nav].modal_menu_nav [modal-menu-headline] .h5 {
+    line-height: 0.92;
   }
 
   .footer-orbit-media {
