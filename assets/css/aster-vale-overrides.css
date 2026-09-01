@@ -1,5 +1,70 @@
 /* Aster Vale project-specific refinements. */
 
+/* The location copy stands on its own; remove the decorative map and all of
+   its dependent pins as a single visual unit. */
+.location-s_desc_map {
+  display: none !important;
+}
+
+/* The season switch was visually suggestive but unreliable across pointer and
+   touch input. Remove the control instead of leaving a dead affordance. */
+.seasons-s_tabs {
+  display: none !important;
+}
+
+/* Keep the studio descriptor attached to the identity card itself. */
+.dev-s_card_studio-label {
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* The ownership mountain belongs at the foot of the section. Constrain the
+   canvas there and neutralize the parallax transform that moved it over copy. */
+.fin-w_scene-bg {
+  top: auto !important;
+  bottom: 0;
+  height: 18% !important;
+  overflow: hidden;
+  background-image: url("/assets/media/aster-vale/site/69ca6aa1e460a649ef2a7972_fin_mounain.avif");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  mix-blend-mode: screen;
+  opacity: 0.62;
+  pointer-events: none;
+}
+
+.fin-w_scene-bg .scene {
+  display: none !important;
+  transform: none !important;
+}
+
+/* Use the original orbit footage directly in the footer. The canvas threshold
+   effect could resolve to an empty frame on some GPU/browser combinations. */
+.footer-w_bg_scene {
+  opacity: 0;
+}
+
+.footer-orbit-media {
+  position: absolute;
+  z-index: 1;
+  top: 48%;
+  left: 50%;
+  width: min(36rem, 52vw);
+  height: auto;
+  pointer-events: none;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 400ms ease;
+}
+
+.footer-orbit-media.is-ready {
+  opacity: 1;
+}
+
 @media screen and (max-width: 991px) {
   /* Keep the mobile hero photograph continuous while the light-field scene
      (including the satellite) remains visible above it. */
@@ -26,5 +91,10 @@
     transform: none !important;
     color: #fff !important;
     mix-blend-mode: difference;
+  }
+
+  .footer-orbit-media {
+    top: 45%;
+    width: min(28rem, 86vw);
   }
 }
