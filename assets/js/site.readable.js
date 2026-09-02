@@ -235,11 +235,11 @@ function initPageTransitions() {
 }
 
 function initScripts() {
-    initThemeChange(), initHeaderHide(), initSnapSections(), initForm(), initPlayPauseVideoScroll(), initIndexCounter(), initNextEntityCard(), initOther(), initAllParallax(), initSectionTransition(), initScrollElementsReveal(), initHighlightText(), initMagneticEffect(), initMapPins(), initNavItemHover(), initMenuItemHover(), initMarquee(), initSoundToggle(), initBenefitCard(), initAccordion(), initLoadMore(), initSlider(), initSliderText(), initSliderFreemode(), initTabs(), initTabsHilight(), initTabsText(), initSummerWinterSwitcher(), initModalCta(), initModalMenu(), initFloatingTips(), initModalVimVideo()
+    initThemeChange(), initHeaderHide(), initSnapSections(), initForm(), initPlayPauseVideoScroll(), initIndexCounter(), initNextEntityCard(), initOther(), initAllParallax(), initSectionTransition(), initScrollElementsReveal(), initHighlightText(), initMagneticEffect(), initMapPins(), initNavItemHover(), initMenuItemHover(), initMarquee(), initSoundToggle(), initBenefitCard(), initAccordion(), initLoadMore(), initSlider(), initSliderText(), initSliderFreemode(), initTabs(), initTabsHilight(), initTabsText(), initSummerWinterSwitcher(), initModalCta(), initModalMenu(), initFloatingTips(), initStaticHeroZoom(), initModalVimVideo()
 }
 
 function initAllScenes() {
-    globalSceneManager && globalSceneManager.destroy(), globalSceneManager = initSceneManager(), initSceneHeroOver(), initSceneHeroBg(), initSceneProlog(), initSceneAbout(), initSceneSeasons(), initSceneBenefitsIntro(), initSceneBenefitsOutro(), initSceneFin(), initSceneDevOver(), initSceneDevBg(), initSceneFactoid(), initSceneFaq(), initSceneFooter(), initSceneArticleDark(), initSceneArticleLight(), initSceneError()
+    globalSceneManager && globalSceneManager.destroy(), globalSceneManager = initSceneManager(), initSceneHeroOver(), initSceneHeroBg(), initSceneProlog(), initSceneSeasons(), initSceneBenefitsIntro(), initSceneBenefitsOutro(), initSceneDevOver(), initSceneDevBg(), initSceneFactoid(), initSceneFaq(), initSceneFooter(), initSceneArticleDark(), initSceneArticleLight(), initSceneError()
 }
 
 function initLenis() {
@@ -2418,6 +2418,29 @@ function initScrollVideo() {
     })
 }
 
+function initStaticHeroZoom() {
+    const hero = document.querySelector("[data-scroll-video-container]");
+    if (!hero) return;
+    const targets = [hero.querySelector(".hero-w_bg .img-w"), hero.querySelector(".mob_hero-w_bg .img-w")].filter(Boolean);
+    if (!targets.length) return;
+    heroZoomTween?.scrollTrigger?.kill(), heroZoomTween?.kill(), heroZoomTween = gsap.fromTo(targets, {
+            scale: 1.28,
+            transformOrigin: "50% 50%"
+        }, {
+            scale: 1,
+            ease: "none",
+            overwrite: "auto",
+            scrollTrigger: {
+                id: "hero-static-zoom",
+                trigger: hero,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 0.6,
+                invalidateOnRefresh: !0
+            }
+        })
+}
+
 function initCanvasEffect(e, t, o = {}) {
     const n = "string" == typeof e ? document.querySelectorAll(e) : [e];
     if (!n.length) return;
@@ -4093,6 +4116,7 @@ let lenis = null,
     breakPoint = 992,
     resizeTimeout = null,
     globalSceneManager = null,
+    heroZoomTween = null,
     durS = .4,
     durM = .8,
     durL = 1.2,
